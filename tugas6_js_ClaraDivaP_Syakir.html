@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Info Gempa dan Dampaknya</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  </head>
+  <body>
+    <div style="text-align: center;">
+    <table class="table">
+        <thead class="table-info">
+            <tr>
+                <th>No</th>
+                <th>Lokasi</th>
+                <th>Skala</th>
+                <th>Dampak</th>
+            </tr>
+        </thead>
+        <tbody class="table-group-divider">
+            <script>
+                class Gempa{
+                    constructor(lokasi, skala, no){
+                        this.loc = lokasi;
+                        this.scale = skala;
+                        this.nom = no;
+                    }
+            
+                    getDampak(){
+                    if(this.scale <= 2) this.dampak = 'Tidak berasa';
+                    else if(this.scale > 2 && this.scale <= 4) this.dampak = 'Bangunan Retak';
+                    else if(this.scale > 4 && this.scale <= 6) this.dampak = 'Bangunan Roboh';
+                    else if(this.scale > 6) this.dampak = 'Bangunan Roboh dengan Potensi Tsunami';
+                    else this.dampak = '';
+            
+                    return this.dampak;
+                    }
+            
+                    /*nomor(){
+                        let i;
+                        for(i=1; i<=10; i++){
+                            console.log(i);
+                        }
+                    }*/
+            
+                    //fungsi infoGempa() memberikan (mencetak) informasi gempa berbentuk tabel dari bootstrap dengan kolom: no, lokasi, skala, dampak
+                    infoGempa(){
+                        document.write(`
+                        <tr>
+                            <td>${this.nom}</td>
+                            <td>${this.loc}</td>
+                            <td>${this.scale}</td>
+                            <td>${this.getDampak()}</td>
+                        </tr>`)
+                    }
+            
+                    //----------------membuat object-----------------
+                   
+                }
+            
+                let g1 = new Gempa('Sulawesi', 2, 1); g1.infoGempa()
+                let g2 = new Gempa('Sumatera Utara', 3, 2); g2.infoGempa()
+                let g3 = new Gempa('Laut Banda', 5, 3); g3.infoGempa()
+                let g4 = new Gempa('Kalimantan Barat', 1, 4); g4.infoGempa()
+                let g5 = new Gempa('Halmahera', 4, 5); g5.infoGempa()
+                let g6 = new Gempa('Sumatera Selatan', 6, 6); g6.infoGempa()
+                let g7 = new Gempa('Malang', 5, 7); g7.infoGempa()
+                let g8 = new Gempa('Sumbawa', 8, 8); g8.infoGempa()
+                let g9 = new Gempa('Riau', 9, 9); g9.infoGempa()
+                let g10 = new Gempa('Irian Jaya', 1, 10); g10.infoGempa()
+            
+            </script>
+        </tbody>
+    </table>
+    </div>
+  </body>
+</html>
+
+
+
